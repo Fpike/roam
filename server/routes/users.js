@@ -9,10 +9,9 @@ const passwordValidator = require("../middleware/passwordValidator.js")
 router.post("/", passwordValidator, UsersController.create);
 router.get("/find/:email", UsersController.findByEmail);
 router.get("/findById/:id", UsersController.findById);
-router.post("/set-spending-goals", tokenChecker, UsersController.setSpendingGoals)
 router.get("/find", tokenChecker, UsersController.findUser);
-router.post("/quiz-result", tokenChecker, UsersController.saveQuizResult)
-router.get("/quiz-result", tokenChecker, UsersController.getQuizResult)
+router.post("/create-profile-blurb", tokenChecker, UsersController.createProfileBlurb);
+router.post("/create-traveller-type", tokenChecker, UsersController.createTravellerType);
 
 
 module.exports = router;

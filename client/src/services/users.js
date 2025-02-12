@@ -36,7 +36,7 @@ export async function getUserByEmail(token, email) {
     return user;
 }
 
-export async function getUserByName(token, name) {
+export async function getUserByName(token, firstName) {
     const requestOptions = {
         method: "GET",
         headers: {
@@ -44,7 +44,7 @@ export async function getUserByName(token, name) {
             "Content-Type": "application/json"
         },
     };
-    const response = await fetch(`${BACKEND_URL}/users/find/${name}`, requestOptions);
+    const response = await fetch(`${BACKEND_URL}/users/find/${firstName}`, requestOptions);
 
     if (!response.ok) {
         throw new Error(`User not found or error: ${response.statusText}`);
@@ -54,17 +54,18 @@ export async function getUserByName(token, name) {
 }
 
 
-export const submitNewUser = async ( name, email, password ) => {
+export const submitNewUser = async (firstName, lastName, email, password) => {
     try {
         const response = await fetch('http://localhost:9000/users', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, email, password }),
+            body: JSON.stringify({ firstName, lastName, email, password }),
         });
 
         const data = await response.json();
         
         if (response.ok) {
+            localStorage.setItem("token", data.token);  // Store token for authentication
             return data;
         } else {
             throw new Error(data.message || 'Signup failed');
@@ -75,41 +76,29 @@ export const submitNewUser = async ( name, email, password ) => {
     }
 };
 
-export async function setSpendingGoals(token, currentSavings, disposableIncome, foodAndDrinkGoal, socialAndEntertainmentGoal, shoppingGoal, holidayAndTravelGoal, healthAndBeautyGoal, miscGoal) {
+export async function createProfileBlurb(token, profileBlurb) {
     const payload = {
-        currentSavings: currentSavings,
-        disposableIncome: disposableIncome,
-        foodAndDrinkGoal: foodAndDrinkGoal,
-        socialAndEntertainmentGoal: socialAndEntertainmentGoal,
-        shoppingGoal: shoppingGoal,
-        holidayAndTravelGoal: holidayAndTravelGoal,
-        healthAndBeautyGoal: healthAndBeautyGoal,
-        miscGoal: miscGoal
+        profileBlurb: profileBlurb,
     }
     const requestOptions = {
         method: "POST",
         headers: {
             Authorization: `Bearer ${token}`,
-    
             "Content-Type": "application/json",
         },
         body: JSON.stringify(payload)
     };
-    const response = await fetch(`${BACKEND_URL}/users/set-spending-goals`, requestOptions)
+    const response = await fetch(`${BACKEND_URL}/users/create-profile-blurb`, requestOptions)
 
-    if (response.status === 201){
-        return await response.json();
-        
-    } else{
-        throw new Error(
-            `Received status ${response.status} when attempting to set spending goals. Expected 201`
-        )
+    if (!response.ok) {
+        throw new Error(`Failed to update profile blurb: ${response.statusText} (Status: ${response.status})`);
     }
 }
 
-export async function saveQuizResult(token, quizResult) {  // Changed parameter name from saveQuizResult to quizResult
+
+export async function createTravellerType(token, travellerType) {
     const payload = {
-        quizResult: quizResult,  // Match the key to what the backend expects
+        travellerType: travellerType,
     }
     const requestOptions = {
         method: "POST",
@@ -119,13 +108,11 @@ export async function saveQuizResult(token, quizResult) {  // Changed parameter 
         },
         body: JSON.stringify(payload)
     };
-    const response = await fetch(`${BACKEND_URL}/users/quiz-result`, requestOptions)
-    
-    if (response.status === 201){
-        return await response.json();
-    } else {
-        throw new Error(
-            `Received status ${response.status} when attempting to save quiz result. Expected 201`
-        )
+    const response = await fetch(`${BACKEND_URL}/users/create-traveller-type`, requestOptions)
+
+    if (!response.ok) {
+        throw new Error(`Failed to update traveller type: ${response.statusText} (Status: ${response.status})`);
     }
-};
+}
+
+

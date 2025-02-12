@@ -3,10 +3,7 @@ const cors = require('cors');
 const app = express();
 
 const authenticationRouter = require("./routes/authentication")
-const savingsGoalRouter = require("./routes/savings_goal");
-const diaryEntryRouter = require("./routes/diaryEntry")
 const usersRouter = require("./routes/users");
-const financialAdviceRouter = require("./routes/financialAdvice");
 const tokenChecker = require('./middleware/tokenChecker');
 
 app.use(cors());
@@ -31,13 +28,6 @@ app.use("/tokens", authenticationRouter);
 app.use("/users", usersRouter);
 
 
-app.use("/diary", diaryEntryRouter);
-
-
-app.use("/", savingsGoalRouter);
-app.use("/financial-advice", financialAdviceRouter);
-
-app.use("/quiz-result", tokenChecker)
 
 
 module.exports = app;

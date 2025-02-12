@@ -1,30 +1,29 @@
 import { Link } from "react-router-dom";
 import { NavBar } from "../../components/NavBar";
-import "./Homepage.css"; // Ensure you import your CSS
+import { LoginForm } from "../../components/LoginForm/LoginForm";
+import photo from "../../assets/patagonia.png"
+import styles from "./Homepage.module.css"
+import "../../index.css"
+
 
 export function Homepage() {
-
 
     return (
         <>
             <NavBar />
-            <div className="home ">
-                <div className="hero-section">
-                    <h1 className="hero-title">Welcome to Mean Money</h1>
-                    <p className="hero-subtitle">
-                    The truly free money management app that keeps you afloat, <br></br>with advice that bites.
-                    </p>
-                    <div className="cta-buttons">
-                        <Link to="/login" className="home-btn login-btn">Log In</Link>
-                        <Link to="/signup" className="home-btn signup-btn">Sign Up</Link>
+            <div className="row m-0 p-0">
+                <div className="col-md-6 p-0">
+                    <img src={photo} />
+                </div>
+                <div className="col-md-6 p-0 d-flex justify-content-center align-items-center">
+                    <div className={styles.containerBox}>
+                        <h3 style={{marginBottom: "30px", marginTop: "20px"}}>Welcome, Explorer!</h3>
+                        <p style={{marginBottom: "20px"}}>Save your favorite travel destinations and share your journey with a community of like-minded travelers.</p>
+                        <h5>Already a member?</h5>
+                        <LoginForm />
+                        <Link style={{marginBottom: "40px"}} className={styles.Link} to="/signup" >Not a member? Sign up here</Link>
                     </div>
                 </div>
-                <section className="wave-section">
-                    <div className='wave wave1'></div>
-                    <div className='wave wave2'></div>
-                    <div className='wave wave3'></div>
-                    <div className='wave wave4'></div>
-                </section>
             </div>
         </>
     );

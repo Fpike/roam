@@ -1,27 +1,28 @@
 @font-face {
-  font-family: "DM-Sans";
-  src: url('./assets/DM_Sans/DM_Sans/DMSans-VariableFont_opsz,wght.ttf') format('truetype');
-}
-
+    font-family: "DM-Sans";
+    src: url('./assets/DM_Sans/DM_Sans/DMSans-VariableFont_opsz,wght.ttf') format('truetype');
+  }
+  
 :root {
-  font-family: "DM-Sans", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-  color: rgb(29, 29, 29);
+    background-color: #e9e8e3;
+    font-family: "DM-Sans", sans-serif;
+    line-height: 1.5;
+    color: rgb(29, 29, 29);
 }
 
 html, body {
-  margin: 0;
-  padding: 0;
-  width: 100%; 
-  background-color: #858FFF; 
-  font-family: "DM-Sans", Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  cursor: url('./assets/mean-money-logo-filled.png') 10 10, auto;
+    background-color: #e9e8e3;
 }
 
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+text {
+    color: #e5e5e5;
 }
+
+/* .container {
+    padding: 0;
+} */
+
+/* .col {
+    padding: 0;
+    margin: 0;
+} */

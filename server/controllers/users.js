@@ -4,10 +4,11 @@ const { generateToken } = require("../lib/token");
 
 // Create a new User
 
-async function create(req, res) {
-    const { name, email, password } = req.body;
 
-    if (!name || !email || !password) {
+async function create(req, res) {
+    const { firstName, lastName, email, password } = req.body;
+
+    if (!firstName || !lastName || !email || !password) {
         return res.status(400).json({ message: 'All fields are required.' });
     }
 
@@ -18,16 +19,19 @@ async function create(req, res) {
         }
 
         const user = new User({
-            name,
+            firstName,
+            lastName,
             email,
             password,
         });
 
         const savedUser = await user.save();
+        const token = generateToken(savedUser._id);  // Generate token
 
         res.status(201).json({
             message: 'User created successfully',
             user: savedUser,
+            token: token  // Send token back
         });
     } catch (error) {
         console.error('Error creating user:', error);
@@ -45,16 +49,10 @@ async function findUser(req,res){
     const token = generateToken(req.user_id);
 
     const returnUserData = {
-        name: user[0].name,
-        currentSavings: user[0].currentSavings,
-        disposableIncome: user[0].disposableIncome,
-        foodAndDrinkGoal: user[0].foodAndDrinkGoal,
-        socialAndEntertainmentGoal: user[0].socialAndEntertainmentGoal,
-        shoppingGoal: user[0].shoppingGoal,
-        holidayAndTravelGoal: user[0].holidayAndTravelGoal,
-        healthAndBeautyGoal: user[0].healthAndBeautyGoal,
-        miscGoal: user[0].miscGoal,
-        quizResult: user[0].quizResult
+        firstName: user[0].firstName,
+        lastName: user[0].lastName,
+        profileBlurb: user[0].profileBlurb,
+        travellerType: user[0].travellerType
     }
     res.status(200).json({userData: returnUserData, token: token });
 }
@@ -96,112 +94,86 @@ async function findById(req, res) {
     }
 };
 
-// Set a User's spending goals
+// Set a user's blurb
 
-async function setSpendingGoals(req, res){
+async function createProfileBlurb(req, res) {
     const token = generateToken(req.user_id);
-    try{
-        
+    try {
         const id = req.user_id
-        for (const key in req.body){
-            if (!isNaN(req.body[key]) && (req.body[key])>=0){
-            
+        for (const key in req.body) {
+            if (typeof req.body[key] === "string") { //check if string
+                let wordCount = req.body[key].trim().split(/\s+/).length; //count words
+                if (wordCount >= 20 && wordCount <= 50) {
+                    console.log("Valid blurb:", req.body[key]);
+                } else {
+                    console.log("Blurb must be between 20 and 50 words.")
+                }
             }
         }
-        const updateSpendingGoals = await User.updateOne(
+        const updateProfileBlurb = await User.updateOne(
             {_id: req.user_id},
             {$set: {
-                currentSavings: req.body.currentSavings.toFixed(2),
-                disposableIncome: req.body.disposableIncome.toFixed(2),
-                foodAndDrinkGoal: req.body.foodAndDrinkGoal.toFixed(2),
-                socialAndEntertainmentGoal: req.body.socialAndEntertainmentGoal.toFixed(2),
-                shoppingGoal: req.body.shoppingGoal.toFixed(2),
-                holidayAndTravelGoal: req.body.holidayAndTravelGoal.toFixed(2),
-                healthAndBeautyGoal: req.body.healthAndBeautyGoal.toFixed(2),
-                miscGoal: req.body.miscGoal.toFixed(2)
-            }}).then((updateSpendingGoals) => {
+                profileBlurb: req.body.profileBlurb
+            }}).then((updateProfileBlurb) => {
                 res.status(201).json({token: token});
-            });
-
+            })
     } catch (error) {
-        res.status(400).json({message: "Error setting user spending goals", token: token})
+        res.status(400).json({message: "Error setting profile blurb", token: token})
     }
 }
 
+// Set a user's traveller type
 
-// Saves user quiz result
-
-async function saveQuizResult(req, res) {
+async function createTravellerType(req, res) {
     const token = generateToken(req.user_id);
-    const { quizResult } = req.body;
-
     try {
-        // Validate quiz result
-        if (!quizResult) {
-            return res.status(400).json({ message: "Quiz result is required." });
+        const { travellerType } = req.body;
+        
+        // Validate that travellerType is an array
+        if (!Array.isArray(travellerType)) {
+            return res.status(400).json({ 
+                message: "Traveller type must be an array",
+                token: token 
+            });
         }
 
-        // Update the user's quiz result
-        const updatedUser = await User.findByIdAndUpdate(
-            req.user_id, // User ID from token middleware
-            { $set: { quizResult: quizResult } },
-            { new: true } // Return the updated document
+        // Update the user
+        const updateTravellerType = await User.findByIdAndUpdate(
+            req.user_id,
+            { $set: { travellerType: travellerType } },
+            { new: true }
         );
 
-        if (!updatedUser) {
-            return res.status(404).json({ message: "User not found." });
-        }
-
-        return res.status(201).json({ 
-            message: "Quiz result saved successfully", 
-            token: token 
-        });
-            
-    } catch (error) {
-        console.error("Error saving quiz result:", error);
-        return res.status(500).json({ 
-            message: "Error saving user quiz result", 
-            token: token 
-        });
-    }
-}
-
-async function getQuizResult(req, res) {
-    try {
-        const user = await User.findById(req.user_id);
-
-        if (!user) {
-            return res.status(404).json({ message: "User not found" });
-        }
-
-        // If no quiz result has been set yet
-        if (!user.quizResult) {
-            return res.status(200).json({ 
-                message: "No quiz result found", 
-                quizResult: null 
+        if (!updateTravellerType) {
+            return res.status(404).json({ 
+                message: "User not found",
+                token: token 
             });
         }
 
-        return res.status(200).json({ 
-            message: "Quiz result retrieved successfully", 
-            quizResult: user.quizResult 
+        res.status(200).json({
+            message: "Traveller type updated successfully",
+            token: token
         });
     } catch (error) {
-        console.error("Error retrieving quiz result:", error);
-        return res.status(500).json({ 
-            message: "Error retrieving quiz result", 
-            error: error.message 
+        console.error('Error updating traveller type:', error);
+        res.status(400).json({
+            message: "Error setting traveller type", 
+            error: error.message,
+            token: token
         });
     }
 }
+
+
+
 
 const UsersController = {
     create: create,
     findByEmail,
     findById,
-    setSpendingGoals,
     findUser,
-    saveQuizResult,
-    getQuizResult
+    createProfileBlurb,
+    createTravellerType
 };
 module.exports = UsersController;

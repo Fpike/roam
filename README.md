@@ -24,7 +24,7 @@ Step 5:
 - While still in the server directory, create `.env` with `touch .env`
 - This file needs the following contents:
 ```
-MONGODB_URL="mongodb://0.0.0.0/mean-money"
+MONGODB_URL="mongodb://0.0.0.0/roam"
 PORT = 9000
 NODE_ENV="development"
 JWT_SECRET="secret"
@@ -54,7 +54,7 @@ VITE_BACKEND_URL="http://localhost:9000"
 - Under `/server`, create a file `.env.test`
 - Then add the following contents to this file:
 ```
-MONGODB_URL="mongodb://0.0.0.0/mean-money-test"
+MONGODB_URL="mongodb://0.0.0.0/roam"
 ```
 (this should ensure your tests use a separate test database)
 

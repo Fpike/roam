@@ -1,7 +1,3 @@
-# MeanMoney
-*The finance app that bites*
-MeanMoney is a budgeting site that allows the user to track their spending, compare it against goals, and get advice on where to cut back spending.
-
 # Setup
 Step 1: Clone the repo
 

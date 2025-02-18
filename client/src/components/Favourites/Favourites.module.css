@@ -1,4 +1,4 @@
-.latestBlogsContainer {
+.favouriteCountriesContainer {
     background-color: rgb(243, 248, 240);
     border: 0.1px solid rgb(244, 244, 244);
     border-radius: 8px;
@@ -8,9 +8,10 @@
     overflow-y: auto;
 }
 
-.latestBlogs h4 {
+.favourites h4 {
     color: #3a5a40;
     font-size: 1.4em;
     margin: 0.8em auto;
-    /* padding-bottom: 1em; */
+    padding-bottom: 1em;
+    border-bottom: 0.2px solid rgb(230, 230, 230);
 }

@@ -115,4 +115,40 @@ export async function createTravellerType(token, travellerType) {
     }
 }
 
+export async function createCountriesVisited(token, countriesVisited) {
+    const payload = {
+        countriesVisited: countriesVisited,
+    }
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload)
+    };
+    const response = await fetch(`${BACKEND_URL}/users/create-countries-visited`, requestOptions)
 
+    if (!response.ok) {
+        throw new Error(`Failed to update traveller type: ${response.statusText} (Status: ${response.status})`);
+    }
+}
+
+export async function createFavouriteCountries(token, favouritedCountries) {
+    const payload = {
+        favouritedCountries: favouritedCountries,
+    }
+    const requestOptions = {
+        method: "POST",
+        headers: {
+            Authorization: `Bearer ${token}`,
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(payload)
+    };
+    const response = await fetch(`${BACKEND_URL}/users/create-favourite-countries`, requestOptions)
+
+    if (!response.ok) {
+        throw new Error(`Failed to update traveller type: ${response.statusText} (Status: ${response.status})`);
+    }
+}

@@ -67,21 +67,22 @@ export function HeroBanner() {
     }
     
     return (
-        <div className="container">
-            <div className="row py-3 mb-3 align-items-center">
-                <div className="col-md-6">
+        <div className="container p-2">
+            <div className={styles.heroBannerContainer}>
+            <div className="row align-items-center p-3">
+                <div className="col-md-6 p-0">
                     <h3 style={{textAlign: "left"}} className={styles.h3}>Hi, I'm {userData?.firstName || 'there'}</h3>
-                    <p>{userData?.profileBlurb || 'Loading profile...'}</p>
+                    <p style={{marginRight: "16px"}}>{userData?.profileBlurb || 'Loading profile...'}</p>
                     <TravellerType />
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-6 p-0">
                     <div className="my-0">
-                        <img 
+                        <img className={`img-fluid ${styles.imgHero}`}
                             src="/src/assets/patagonia.png" 
-                            className="img-fluid" 
                             alt="Patagonia Logo" 
                         />
                     </div>
+                </div>
                 </div>
             </div>
         </div>

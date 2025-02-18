@@ -1,7 +1,9 @@
 import { useEffect, useState } from "react";
 import { getMyUserDetails } from "../../services/users";
+import { createCountriesVisited } from "../../services/users";
 
 export function SelectCountries() {
+    const [dropdownOpen, setDropdownOpen] = useState(false);
     const [selectedCountries, setSelectedCountries] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
@@ -43,7 +45,7 @@ export function SelectCountries() {
                     localStorage.setItem("token", allData.token);
                     // Store the userId here
                     localStorage.setItem("userId", allData.userData._id);
-                    setSelectedCountries(allData.userData.travellerType || []);
+                    setSelectedCountries(allData.userData.countriesVisited || []);
                     setLoading(false);
                 })
                 .catch((error) => {
@@ -53,11 +55,108 @@ export function SelectCountries() {
                 });
         }, []);
 
+        const toggleDropdown = () => {
+            setDropdownOpen(!dropdownOpen);
+        };
+
+        const handleSelection = (type) => {
+            setIsSaved(false)
+            setSelectedCountries((prev) =>
+                prev.includes(type) ? prev.filter((t) => t !== type) : [...prev, type]
+            );
+            setDropdownOpen(false);
+        };
+
+        const saveCountriesVisited = async () => {
+                const token = localStorage.getItem("token");
+                if (!token) {
+                    console.error("No token found");
+                    return;
+                }
+        
+                try {
+                    await createCountriesVisited(token, selectedCountries);
+                    console.log("Countries visited updated:", selectedCountries);
+                    setIsSaved(true);
+                } catch (error) {
+                    console.error("Error:", error);
+                    setIsSaved(false);
+                }
+            };
+        
+            if (loading) {
+                return <div>Loading...</div>;
+            }
+        
+            if (error) {
+                return <div>{error}</div>;
+            }
+
     return (
         <>
-            <div className="container">
-                
-            </div>
-        </>
+    <div>
+        <div className="col px-0">
+            <h5>What countries have you visited?</h5>
+            <p className="mb-2">Select any that apply to you</p>
+        </div>
+
+        <div className="dropdown">
+            <button 
+                onClick={toggleDropdown} 
+                className={`flex items-center mt-2 mx-1 px-3 py-2 rounded-pill border-0 bg-green-light `}
+                type="button" 
+                aria-expanded="false"
+            >
+                Select Countries <i className="bi bi-chevron-down ms-2"></i>
+            </button>
+            <ul className={`dropdown-menu ${dropdownOpen ? "show" : ""}`} style={{ maxHeight: '200px', overflowY: 'auto' }}>
+                {countryList.map((country) => (
+                    <li key={country}>
+                        <a 
+                            className={`dropdown-item ${selectedCountries.includes(country) ? "bg-green" : ""}`} 
+                            onClick={(e) => {
+                                e.preventDefault();
+                                handleSelection(country)}}
+                            href="#"
+                            style={{ cursor: 'pointer' }}
+                        >
+                            {country}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+        </div>
+
+        <div className="flex gap-4 flex-wrap mt-3">
+            {selectedCountries.map((country) => (
+                <button
+                    key={country}
+                    className={`flex items-center mt-2 mx-1 px-3 py-2 rounded-pill border-0 bg-green`}
+                    onClick={() => handleSelection(country)}
+                >
+                    {country} 
+                    <i className="bi bi-x ms-2"></i>
+                </button>
+            ))}
+        </div>
+
+        {selectedCountries.length > 0 && (
+            <button
+                onClick={saveCountriesVisited}
+                className={`mt-3 px-3 py-2 rounded-pill border-0 d-flex align-items-center gap-2
+                ${isSaved ? 'bg-green-saved-preferences' : 'bg-green-preferences'}`}
+            >
+                {isSaved ? (
+                    <>
+                        <span>Preferences saved</span>
+                        <i className="bi bi-check2 ms-2"></i>
+                    </>
+                ) : (
+                    "Save preferences"
+                )}
+            </button>
+        )}
+    </div>
+    </>
     )
 }

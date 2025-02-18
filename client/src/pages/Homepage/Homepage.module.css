@@ -25,7 +25,8 @@ img {
 }
 
 html, body {
-    background-color: #e9e8e3;
+    background-image: linear-gradient(to bottom right, rgb(245, 226, 226), rgb(132, 201, 93));
+    /* background-color: #e1bf17; */
 }
 
 .container {
@@ -50,4 +51,8 @@ html, body {
 
 h3, h5 {
     color: #3a5a40;
+}
+
+img {
+    border-radius: 0px;
 }

@@ -1,12 +1,11 @@
 import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-
 import logo from "../assets/roam_white.svg";
-import "./Footer.css";
-import { LogOutButton } from "./LogOutButton.jsx";
+import "./NavBar.css";
 
-export function NavBar() {
+
+export function Footer() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
     const [userData, setUserData] = useState(null);
     const [loading, setLoading] = useState(true);
@@ -44,7 +43,6 @@ export function NavBar() {
                     {isLoggedIn ? (
                         <>
                             <Link className="nav-link" to="/dashboard">{userData?.name}</Link>
-                            <LogOutButton />
                         </>
                     ) : (
                         <>

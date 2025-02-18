@@ -52,7 +52,9 @@ async function findUser(req,res){
         firstName: user[0].firstName,
         lastName: user[0].lastName,
         profileBlurb: user[0].profileBlurb,
-        travellerType: user[0].travellerType
+        travellerType: user[0].travellerType,
+        countriesVisited: user[0].countriesVisited,
+        favouritedCountries: user[0].favouritedCountries,
     }
     res.status(200).json({userData: returnUserData, token: token });
 }
@@ -166,6 +168,92 @@ async function createTravellerType(req, res) {
 }
 
 
+// Set a user's visited countries
+
+async function createCountriesVisited(req, res) {
+    const token = generateToken(req.user_id);
+    try {
+        const { countriesVisited } = req.body;
+        
+        // Validate that countriesVisited is an array
+        if (!Array.isArray(countriesVisited)) {
+            return res.status(400).json({ 
+                message: "Countries visited must be an array",
+                token: token 
+            });
+        }
+
+        // Update the user
+        const updateCountriesVisited = await User.findByIdAndUpdate(
+            req.user_id,
+            { $set: { countriesVisited: countriesVisited } },
+            { new: true }
+        );
+
+        if (!updateCountriesVisited) {
+            return res.status(404).json({ 
+                message: "User not found",
+                token: token 
+            });
+        }
+
+        res.status(200).json({
+            message: "Countries visited updated successfully",
+            token: token
+        });
+    } catch (error) {
+        console.error('Error updating countries visited:', error);
+        res.status(400).json({
+            message: "Error setting countries visited", 
+            error: error.message,
+            token: token
+        });
+    }
+}
+
+// Set a user's favourite countries
+
+async function createFavouriteCountries(req, res) {
+    const token = generateToken(req.user_id);
+    try {
+        const { favouritedCountries } = req.body;
+        
+        // Validate that countriesVisited is an array
+        if (!Array.isArray(favouritedCountries)) {
+            return res.status(400).json({ 
+                message: "Favourited countries must be an array",
+                token: token 
+            });
+        }
+
+        // Update the user
+        const updateFavouriteCountries = await User.findByIdAndUpdate(
+            req.user_id,
+            { $set: { favouritedCountries: favouritedCountries } },
+            { new: true }
+        );
+
+        if (!updateFavouriteCountries) {
+            return res.status(404).json({ 
+                message: "User not found",
+                token: token 
+            });
+        }
+
+        res.status(200).json({
+            message: "Favourited countries updated successfully",
+            token: token
+        });
+    } catch (error) {
+        console.error('Error updating countries visited:', error);
+        res.status(400).json({
+            message: "Error setting favourite countries", 
+            error: error.message,
+            token: token
+        });
+    }
+}
+
 
 
 const UsersController = {
@@ -174,6 +262,8 @@ const UsersController = {
     findById,
     findUser,
     createProfileBlurb,
-    createTravellerType
+    createTravellerType,
+    createCountriesVisited,
+    createFavouriteCountries,
 };
 module.exports = UsersController;

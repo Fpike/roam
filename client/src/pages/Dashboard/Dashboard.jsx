@@ -1,9 +1,13 @@
 import { NavBar } from "../../components/NavBar";
+import { Footer } from "../../components/Footer";
 import { HeroBanner } from "../../components/HeroBanner/HeroBanner";
+import { DisplayCountries } from "../../components/Countries/DisplayCountries";
+import { DisplayFavouriteCountries } from "../../components/Favourites/Favourites";
 import { LatestBlogs } from "../../components/LatestBlogs/LatestBlogs";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+
 
 export function Dashboard() {
     const [loading, setLoading] = useState(true);
@@ -32,21 +36,26 @@ export function Dashboard() {
 
     return (
         <>
-        <NavBar />
-        <div className="container vh-100 bg-white">
-        <HeroBanner />
-        <div className="container">
-            <div className="row py-3 mb-3">
-                <div className="col-md-7">
-                    <LatestBlogs />  
+            <NavBar />
+            <div className="container bg-white pb-1">
+                <div className="py-3">
+                    <HeroBanner />
                 </div>
-                <div className="col-md-5">
-                <p>My Favourite Countries</p>
+                <div className="container">
+                    <div className="row g-3 mb-3">
+                        <div className="col-md-7">
+                            <LatestBlogs />
+                        </div>
+                        <div className="col-md-5">
+                            <DisplayFavouriteCountries />
+                            <br />
+                            <DisplayCountries />
+                        </div>
+                    </div>
+
                 </div>
             </div>
-            
-        </div>
-        </div>
+            <Footer />
         </>
     );
 }

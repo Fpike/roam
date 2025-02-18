@@ -4,6 +4,7 @@ import { Homepage } from './pages/Homepage/Homepage';
 import { SignUpPage } from './pages/SignUpPage/SignUpPage';
 import { BuildProfilePage } from './pages/BuildProfilePage/BuildProfilePage';
 import { ProtectedRoute } from './components/ProtectedRoute';
+import { NewBlogPage } from './pages/NewBlog/NewBlogPage'
 
 
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
@@ -35,6 +36,11 @@ const router = createBrowserRouter([
     path: "/build-profile",
     element: <ProtectedRoute><BuildProfilePage /></ProtectedRoute>
   },
+
+  {
+    path: "/new-blog",
+    element: <ProtectedRoute><NewBlogPage /></ProtectedRoute>
+  }
   
 ]);
 

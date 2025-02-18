@@ -1,9 +1,10 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
 
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+
 
     test: {
       // globals: true - makes the global test functions (describe, it, test, etc.)
@@ -18,5 +19,7 @@ export default defineConfig({
       // setupFiles: "./vitest.setup.js" allows us to import anything we need for our
       // tests, without having to do so in each individual test file (e.g. jest-dom)
       setupFiles: "./vitest.setup.js",
-    }
+
+    },
+    
 })

@@ -23,7 +23,8 @@
     "lucide-react": "^0.475.0",
     "mongodb": "^6.11.0",
     "mongoose": "^8.8.4",
-    "node": "^23.7.0"
+    "node": "^23.7.0",
+    "shadcn-ui": "^0.9.4"
   },
   "devDependencies": {
     "supertest": "^7.0.0"

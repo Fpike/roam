@@ -92,7 +92,7 @@ export function SelectTravellerType() {
                           ${selectedTypes.includes(type) ? "bg-green" : "bg-green-light"}`}
                         onClick={() => handleSelection(type)}
                     >
-                        {type}
+                        {type} 
                     </button>
                 ))}
             </div>

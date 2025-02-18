@@ -4,14 +4,17 @@
   }
   
 :root {
-    background-color: #e9e8e3;
+    /* dictates colour when you drag down from nav or up from footer */
+    background-color: #588157;
     font-family: "DM-Sans", sans-serif;
     line-height: 1.5;
     color: rgb(29, 29, 29);
 }
 
 html, body {
-    background-color: #e9e8e3;
+    background-image: linear-gradient(to bottom right, rgb(245, 226, 226), rgb(132, 201, 93));
+    /* background-color: #e1bf17; */
+    margin-top: 0px;
 }
 
 text {

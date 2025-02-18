@@ -67,6 +67,11 @@ const UserSchema = new mongoose.Schema({
         type: [String],
         enum: countryList,
         default: [],
+    },
+    favouritedCountries: {
+        type: [String],
+        enum: countryList,
+        default: [],
     }
 });
 

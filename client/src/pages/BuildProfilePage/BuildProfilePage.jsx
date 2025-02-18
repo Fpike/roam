@@ -8,17 +8,18 @@ export function BuildProfilePage() {
     return (
         <>
             <NavBar />
-            <div className="container vh-100 p-4" style={{backgroundColor: "white"}}>
+            <div className="container" style={{backgroundColor: "white"}}>
                 <div className="container">
-                    <h3 style={{marginBottom: "30px"}}>Let's build your profile!</h3>
+                    <h3 style={{marginBottom: "30px", paddingTop: "30px"}}>Let's build your profile!</h3>
                     <SelectTravellerType />
                     <br />
                     <hr />
-                    {/* <SelectCountries />
+                    <SelectCountries />
                     <br />
-                    <hr /> */}
+                    <hr />
                     <div style={{marginTop: "30px"}}>
                     <BuildProfileForm />
+                    <br />
                     </div>
                 </div>
             </div>

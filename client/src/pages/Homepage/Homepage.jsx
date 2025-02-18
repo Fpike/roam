@@ -17,8 +17,8 @@ export function Homepage() {
                 </div>
                 <div className="col-md-6 p-0 d-flex justify-content-center align-items-center">
                     <div className={styles.containerBox}>
-                        <h3 style={{marginBottom: "30px", marginTop: "20px"}}>Welcome, Explorer!</h3>
-                        <p style={{marginBottom: "20px"}}>Save your favorite travel destinations and share your journey with a community of like-minded travelers.</p>
+                        <h3>Welcome, Explorer!</h3>
+                        <p>Save your favorite travel destinations and share your journey with a community of like-minded travelers.</p>
                         <h5>Already a member?</h5>
                         <LoginForm />
                         <Link style={{marginBottom: "40px"}} className={styles.Link} to="/signup" >Not a member? Sign up here</Link>

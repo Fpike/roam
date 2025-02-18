@@ -1,0 +1,51 @@
+.countryContainer {
+    background-color: rgb(243, 248, 240);
+    max-height: 400px;
+    height: 300px;
+    border: 0.1px solid rgb(244, 244, 244);
+    border-radius: 8px;
+    align-items: center;
+    text-align: left;
+    box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.07);
+    overflow-y: auto;
+}
+
+.countryContainer::-webkit-scrollbar {
+    width: 8px; /* Adjust width */
+}
+
+.countryContainer::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2); /* Color of the scrollbar */
+    border-radius: 4px;
+}
+
+.countryContainer::-webkit-scrollbar-track {
+    background: rgba(230, 230, 230, 0.5); /* Track color */
+    border-radius: 8px;;
+}
+
+.myCountries {
+    font-size: 1.2em;
+    padding-bottom: 0.8em;
+    /* margin-right: 0.8em; */
+    /* border-bottom: 1px solid rgb(225, 225, 225); */
+}
+
+h4 {
+    color: #3a5a40;
+    font-size: 1.4em;
+    margin: 0.8em auto;
+    /* padding-bottom: 1em; */
+    /* border-bottom: 0.2px solid rgb(230, 230, 230); */
+}
+
+.addBlogButton {
+    border: 0.75px solid #588157!important;
+    border-radius: 50px;
+    color: #588157;
+    text-align: center;
+    padding: 4px 8px;
+    max-width: 90px;
+    font-size: 0.8em;
+}
+

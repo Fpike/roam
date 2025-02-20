@@ -1,0 +1,38 @@
+.latestBlogsContainer {
+    background-color: rgb(243, 248, 240);
+    border: 0.1px solid rgb(244, 244, 244);
+    border-radius: 8px;
+    align-items: center;
+    text-align: left;
+    box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.07);
+    overflow-y: auto;
+}
+
+.latestBlogs h4 {
+    color: #3a5a40;
+    font-size: 1.4em;
+    margin: 0.8em auto;
+    /* padding-bottom: 1em; */
+}
+
+.addBlogButton {
+    border: 0.75px solid #588157!important;
+    font-size: 1em;
+    border-radius: 50px;
+    color: #588157;
+    text-align: center;
+    padding: 4px 12px;
+    max-width: 130px;
+    justify-content: right;
+}
+
+.addBlogSquareButton {
+    border: none;
+    background-image: linear-gradient(to bottom right, rgb(132, 201, 93), #588157);
+    font-size: 1.2em;
+    border-radius: 12px;
+    text-align: center;
+    color: rgb(249, 250, 241);
+    padding: 16px 24px;
+    box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.07);
+}

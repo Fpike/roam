@@ -44,6 +44,7 @@ export function NavBar() {
                     {isLoggedIn ? (
                         <>
                             <Link className="nav-link" to="/dashboard">{userData?.name}</Link>
+                            <Link className="nav-link" to="/build-profile">Edit Profile</Link>
                             <LogOutButton />
                         </>
                     ) : (

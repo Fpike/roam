@@ -8,6 +8,7 @@
     text-align: left;
     box-shadow: 1px 3px 3px 1px rgba(0, 0, 0, 0.07);
     overflow-y: auto;
+    padding-top: 0.2em;;
 }
 
 .countryContainer::-webkit-scrollbar {
@@ -35,9 +36,11 @@ h4 {
     color: #3a5a40;
     font-size: 1.4em;
     margin: 0.8em auto;
-    /* padding-bottom: 1em; */
-    /* border-bottom: 0.2px solid rgb(230, 230, 230); */
+    /* padding-bottom: 1em;
+    border-bottom: 0.2px solid rgb(230, 230, 230); */
 }
+
+
 
 .addBlogButton {
     border: 0.75px solid #588157!important;
@@ -49,3 +52,15 @@ h4 {
     font-size: 0.8em;
 }
 
+.addCountryButton {
+    border: 0.75px solid #588157!important;
+    border-radius: 50px;
+    color: #588157;
+    text-align: center;
+    padding: 4px 6px;
+    /* max-width: 140px; */
+    font-size: 1em;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+}

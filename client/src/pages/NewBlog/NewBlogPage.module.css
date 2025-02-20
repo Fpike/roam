@@ -39,5 +39,31 @@ html, body {
 
 h3, h5 {
     color: #3a5a40;
-    text-align: center;
+    text-align: left;
+}
+
+.newBlogButton {
+
+}
+
+.bg-green {
+    background-color: #588157;
+    color: white;
+}
+
+.bg-green-light {
+    background-color: #dfedde;
+    color: black;
+}
+
+.bg-green-dark {
+    background-color: #344e41;
+    color: white;
+}
+
+.bg-green-preferences {
+    background-color: white;
+    border: 1.5px solid #588157!important;
+    color: #588157;
+    font-weight: 500;
 }

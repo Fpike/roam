@@ -4,6 +4,7 @@ const app = express();
 
 const authenticationRouter = require("./routes/authentication")
 const usersRouter = require("./routes/users");
+const blogsRouter = require("./routes/blogs")
 const tokenChecker = require('./middleware/tokenChecker');
 
 app.use(cors());
@@ -26,6 +27,7 @@ app.get("/test", (req, res) => {
 
 app.use("/tokens", authenticationRouter);
 app.use("/users", usersRouter);
+app.use("/blogs", blogsRouter);
 
 
 

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { NavBar } from "../../components/NavBar";
 import { LoginForm } from "../../components/LoginForm/LoginForm";
-import photo from "../../assets/patagonia.png"
+import photo from "../../assets/taghazout.jpeg"
 import styles from "./Homepage.module.css"
 import "../../index.css"
 

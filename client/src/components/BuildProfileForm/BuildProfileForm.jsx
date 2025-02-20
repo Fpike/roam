@@ -63,7 +63,7 @@ export function BuildProfileForm() {
         <div>
             <div className="container p-0">
                 <form onSubmit={handleSubmit}>
-                    <h5>Tell us a bit about yourself...</h5>
+                    <h5 style={{textAlign: "left"}}>Tell us a bit about yourself...</h5>
 
                     {successMessage && (
                         <div className="success-message" role="alert">

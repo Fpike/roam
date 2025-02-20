@@ -3,7 +3,7 @@ import { Footer } from "../../components/Footer";
 import { HeroBanner } from "../../components/HeroBanner/HeroBanner";
 import { DisplayCountries } from "../../components/Countries/DisplayCountries";
 import { DisplayFavouriteCountries } from "../../components/Favourites/Favourites";
-import { LatestBlogs } from "../../components/LatestBlogs/LatestBlogs";
+import { DisplayLatestBlogs } from "../../components/Blogs/DisplayLatestBlogs";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -44,7 +44,7 @@ export function Dashboard() {
                 <div className="container">
                     <div className="row g-3 mb-3">
                         <div className="col-md-7">
-                            <LatestBlogs />
+                            <DisplayLatestBlogs />
                         </div>
                         <div className="col-md-5">
                             <DisplayFavouriteCountries />

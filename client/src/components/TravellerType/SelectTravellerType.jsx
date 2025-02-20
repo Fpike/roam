@@ -80,7 +80,7 @@ export function SelectTravellerType() {
     return (
         <div>
             <div className="col px-0">
-                <h5>What type of traveller are you?</h5>
+                <h5 style={{textAlign: "left"}}>What type of traveller are you?</h5>
                 <p className="mb-2">Select any that apply to you</p>
             </div>
 

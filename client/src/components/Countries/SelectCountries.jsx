@@ -96,7 +96,7 @@ export function SelectCountries() {
         <>
     <div>
         <div className="col px-0">
-            <h5>What countries have you visited?</h5>
+            <h5 style={{textAlign: "left"}}>What countries have you visited?</h5>
             <p className="mb-2">Select any that apply to you</p>
         </div>
 

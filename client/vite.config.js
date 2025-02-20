@@ -4,6 +4,7 @@ import react from '@vitejs/plugin-react';
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
+  base: "/roam/",
 
 
     test: {
@@ -19,7 +20,6 @@ export default defineConfig({
       // setupFiles: "./vitest.setup.js" allows us to import anything we need for our
       // tests, without having to do so in each individual test file (e.g. jest-dom)
       setupFiles: "./vitest.setup.js",
-
     },
     
 })

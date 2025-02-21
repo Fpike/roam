@@ -13,7 +13,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 // react routes:
 const router = createBrowserRouter([
   {
-    path: "/roam",
+    path: "/",
     element: <Homepage />
   },
 

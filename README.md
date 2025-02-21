@@ -6,27 +6,27 @@ This MERN stack web app lets users build travel profiles, document trips with co
 
 Homepage Interface
 
-<img src="./homepage.png" width="100%" />
+<img src="./homepage.png" width="75%" />
 
 Signup Page for New Users
 
-<img src="./signup.png" width="100%" />
+<img src="./signup.png" width="75%" />
 
 Profile Setup: Select Travel Personalities and Countries Visited
 
-<img src="./profilebuild.png" width="100%" />
+<img src="./profilebuild.png" width="75%" />
 
 Profile Setup: Personal Introduction with a Short Blurb
 
-<img src="./profilebuild2.png" width="100%" />
+<img src="./profilebuild2.png" width="75%" />
 
 User Dashboard: Displaying Profile Information Sourced from Database
 
-<img src="./dashboard.png" width="100%" />
+<img src="./dashboard.png" width="75%" />
 
 Create a New Blog: Users Can Build Country-Specific Blog Pages
 
-<img src="./newblog.png" width="100%" />
+<img src="./newblog.png" width="75%" />
 
 
 # Setup

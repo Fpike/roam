@@ -15,14 +15,21 @@
     /* padding-bottom: 1em; */
 }
 
+.headerRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    padding: 10px 0;
+}
+
 .addBlogButton {
     border: 0.75px solid #588157!important;
     font-size: 1em;
     border-radius: 50px;
     color: #588157;
     text-align: center;
-    padding: 4px 12px;
-    max-width: 130px;
+    padding: 4px 16px;
     justify-content: right;
 }
 

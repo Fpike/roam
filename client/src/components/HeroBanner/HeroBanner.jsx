@@ -2,6 +2,8 @@ import "../../index.css"
 import { getMyUserDetails } from "../../services/users";
 import { TravellerType } from "../TravellerType/TravellerType";
 import styles from "./HeroBanner.module.css"
+import patagoniaImage from "../../assets/patagonia.png";
+
 
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -78,8 +80,8 @@ export function HeroBanner() {
                 <div className="col-md-6 p-0">
                     <div className="my-0">
                         <img className={`img-fluid ${styles.imgHero}`}
-                            src="/src/assets/patagonia.png" 
-                            alt="Patagonia Logo" 
+                            src={patagoniaImage} 
+                            alt="Patagonia" 
                         />
                     </div>
                 </div>

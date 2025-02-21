@@ -1,3 +1,22 @@
+Scroll down for set up instructions
+
+# Roam 
+
+This MERN stack web app lets users build travel profiles, document trips with country-based blogs, and showcase their travel styles and visited destinations. It features secure user authentication with JWT, a dynamic blog editor, and an interactive favorites system for quick access to preferred locations. Using React hooks, structured MongoDB data models, and custom CSS with Bootstrap, the app delivers a responsive, visually engaging experience without external UI libraries.
+
+<img src="public/app_screenshots/homepage.png" alt="App Screenshot" width="500" height="auto">
+
+<img src="public/app_screenshots/signup.png" alt="App Screenshot" width="500" height="auto">
+
+<img src="public/app_screenshots/profilebuild.png" alt="App Screenshot" width="500" height="auto">
+
+<img src="public/app_screenshots/profilebuild2.png" alt="App Screenshot" width="500" height="auto">
+
+<img src="public/app_screenshots/dashboard.png" alt="App Screenshot" width="500" height="auto">
+
+<img src="public/app_screenshots/newblog.png" alt="App Screenshot" width="500" height="auto">
+
+
 # Setup
 Step 1: Clone the repo
 

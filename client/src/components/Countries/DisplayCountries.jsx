@@ -34,14 +34,10 @@ export function DisplayCountries() {
     return (
         <div className={`container ${styles.countryContainer}`}
         >
-            <div className={`row d-flex align-items-center`}>
-                <div className="col-md-7">
-                    <h4>My Countries</h4>
-                </div>
-                <div className="col-md-5">
-                    <div className={`${styles.addCountryButton}`}>Add country +</div>
-                </div>
-            </div>
+            <div className={`d-flex align-items-center justify-content-between ${styles.headerRow}`}>
+                                    <h4 className="m-0">Latest Blogs</h4>
+                                    <div className={`${styles.addCountryButton}`}>Add Country +</div>
+                                </div>
             <hr />
             {userData?.countriesVisited?.map((item, index) => (
                 <ul className="p-1 mx-3"

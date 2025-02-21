@@ -13,7 +13,7 @@ import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 // react routes:
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/roam",
     element: <Homepage />
   },
 
@@ -40,7 +40,9 @@ const router = createBrowserRouter([
   {
     path: "/new-blog",
     element: <ProtectedRoute><NewBlogPage /></ProtectedRoute>
-  }
+  },
+
+  
   
 ]);
 
